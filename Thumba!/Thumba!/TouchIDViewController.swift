@@ -55,8 +55,7 @@ class TouchIDViewController: UIViewController {
         }
         
         guard let _ = policy else {
-            image.image = UIImage(named: "TouchID_off")
-            message.text = "Unexpected error! 😱"
+            showUnexpectedErrorMessage()
             return
         }
         
@@ -73,13 +72,65 @@ class TouchIDViewController: UIViewController {
         // Great! The user is able to use his/her Touch ID 👍
         image.image = UIImage(named: "TouchID_on")
         message.text = kMsgShowFinger
+        
+        loginProcess(policy: policy!)
     }
-
+    
+    private func loginProcess(policy: LAPolicy) {
+        // Start evaluation process with a callback that is executed when the user ends the process successfully or not
+        context.evaluatePolicy(policy, localizedReason: kMsgShowReason, reply: { (success, error) in
+            DispatchQueue.main.async {
+                guard success else {
+                    guard let error = error else {
+                        self.showUnexpectedErrorMessage()
+                        return
+                    }
+                    switch(error) {
+                    case LAError.authenticationFailed:
+                        self.message.text = "There was a problem verifying your identity."
+                    case LAError.userCancel:
+                        self.message.text = "You pressed Cancel button."
+                    // Fallback button was pressed and an extra login step should be implemented for iOS 8 users.
+                    // By the other hand, iOS 9+ users will use the pasccode verification implemented by the own system.
+                    case LAError.userFallback:
+                        self.message.text = "You pressed Fuu! button."
+                    case LAError.systemCancel:
+                        self.message.text = "Authentication was canceled by system."
+                    case LAError.passcodeNotSet:
+                        self.message.text = "Passcode is not set on the device."
+                    case LAError.touchIDNotAvailable:
+                        self.message.text = "Touch ID is not available on the device."
+                    case LAError.touchIDNotEnrolled:
+                        self.message.text = "Touch ID has no enrolled fingers."
+                    // iOS 9+ functions
+                    case LAError.touchIDLockout:
+                        self.message.text = "There were too many failed Touch ID attempts and Touch ID is now locked."
+                    case LAError.appCancel:
+                        self.message.text = "Authentication was canceled by application."
+                    case LAError.invalidContext:
+                        self.message.text = "LAContext passed to this call has been previously invalidated."
+                    // MARK: IMPORTANT: There are more error states, take a look into the LAError struct
+                    default:
+                        self.message.text = "Touch ID may not be configured"
+                        break
+                    }
+                    return
+                }
+                
+                // Good news! Everything went fine 👏
+                self.message.text = self.kMsgFingerOK
+            }
+        })
+    }
+    
+    private func showUnexpectedErrorMessage() {
+        image.image = UIImage(named: "TouchID_off")
+        message.text = "Unexpected error! 😱"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
