@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class TouchIDViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
@@ -15,6 +16,8 @@ class TouchIDViewController: UIViewController {
     let kMsgShowFinger = "Show me your finger 👍"
     let kMsgShowReason = "🌛 Try to dismiss this screen 🌜"
     let kMsgFingerOK = "Login successful! ✅"
+    
+    var context = LAContext()
     
     deinit {
         Utils.removeObserverForNotifications(observer: self)
@@ -40,7 +43,36 @@ class TouchIDViewController: UIViewController {
     }
     
     func updateUI() {
+        var policy: LAPolicy?
+        // Depending the iOS version we've selected properly policy system that the user is able to do
+        if #available(iOS 9.0, *) {
+            // iOS 9+ users with Biometric and Passcode verification
+            policy = .deviceOwnerAuthentication
+        } else {
+            // iOS 8 users with Biometric and Custom (Fallback button) verification
+            context.localizedFallbackTitle = "Fuu!"
+            policy = .deviceOwnerAuthenticationWithBiometrics
+        }
         
+        guard let _ = policy else {
+            image.image = UIImage(named: "TouchID_off")
+            message.text = "Unexpected error! 😱"
+            return
+        }
+        
+        var err: NSError?
+        
+        // Check if the user is able to use the policy we've selected previously
+        guard context.canEvaluatePolicy(policy!, error: &err) else {
+            image.image = UIImage(named: "TouchID_off")
+            // Print the localized message received by the system
+            message.text = err?.localizedDescription
+            return
+        }
+        
+        // Great! The user is able to use his/her Touch ID 👍
+        image.image = UIImage(named: "TouchID_on")
+        message.text = kMsgShowFinger
     }
 
     override func didReceiveMemoryWarning() {
