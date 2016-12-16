@@ -89,11 +89,11 @@ class TouchIDViewController: UIViewController {
                     case LAError.authenticationFailed:
                         self.message.text = "There was a problem verifying your identity."
                     case LAError.userCancel:
-                        self.message.text = "You pressed Cancel button."
+                        self.message.text = "Authentication was canceled by user."
                     // Fallback button was pressed and an extra login step should be implemented for iOS 8 users.
                     // By the other hand, iOS 9+ users will use the pasccode verification implemented by the own system.
                     case LAError.userFallback:
-                        self.message.text = "You pressed Fuu! button."
+                        self.message.text = "The user tapped the fallback button (Fuu!)"
                     case LAError.systemCancel:
                         self.message.text = "Authentication was canceled by system."
                     case LAError.passcodeNotSet:
