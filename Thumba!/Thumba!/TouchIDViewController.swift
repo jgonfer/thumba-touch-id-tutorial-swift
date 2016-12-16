@@ -45,19 +45,14 @@ class TouchIDViewController: UIViewController {
     
     func updateUI() {
         var policy: LAPolicy?
-        // Depending the iOS version we've selected properly policy system that the user is able to do
+        // Depending the iOS version we'll need to choose the policy we are able to use
         if #available(iOS 9.0, *) {
             // iOS 9+ users with Biometric and Passcode verification
             policy = .deviceOwnerAuthentication
         } else {
-            // iOS 8 users with Biometric and Custom (Fallback button) verification
+            // iOS 8+ users with Biometric and Custom (Fallback button) verification
             context.localizedFallbackTitle = "Fuu!"
             policy = .deviceOwnerAuthenticationWithBiometrics
-        }
-        
-        guard let _ = policy else {
-            showUnexpectedErrorMessage()
-            return
         }
         
         var err: NSError?
