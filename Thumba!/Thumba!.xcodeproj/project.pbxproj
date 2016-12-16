@@ -12,6 +12,7 @@
 		1DC59CAB1E03EF5300895548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC59CA91E03EF5300895548 /* Main.storyboard */; };
 		1DC59CAD1E03EF5300895548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC59CAC1E03EF5300895548 /* Assets.xcassets */; };
 		1DC59CB01E03EF5300895548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC59CAE1E03EF5300895548 /* LaunchScreen.storyboard */; };
+		1DC59CB91E0400AC00895548 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC59CB81E0400AC00895548 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1DC59CAC1E03EF5300895548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DC59CAF1E03EF5300895548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DC59CB11E03EF5300895548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC59CB81E0400AC00895548 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				1DC59CAC1E03EF5300895548 /* Assets.xcassets */,
 				1DC59CB11E03EF5300895548 /* Info.plist */,
+				1DC59CB81E0400AC00895548 /* Utils.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				1DC59CA81E03EF5300895548 /* TouchIDViewController.swift in Sources */,
 				1DC59CA61E03EF5300895548 /* AppDelegate.swift in Sources */,
+				1DC59CB91E0400AC00895548 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

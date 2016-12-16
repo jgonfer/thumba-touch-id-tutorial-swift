@@ -16,9 +16,31 @@ class TouchIDViewController: UIViewController {
     let kMsgShowReason = "🌛 Try to dismiss this screen 🌜"
     let kMsgFingerOK = "Login successful! ✅"
     
+    deinit {
+        Utils.removeObserverForNotifications(observer: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        setupController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateUI()
+    }
+    
+    private func setupController() {
+        Utils.registerNotificationWillEnterForeground(observer: self, selector: #selector(TouchIDViewController.updateUI))
+        
+        // Add right button in the navigation bar to repeat the login process so many times as we want
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(TouchIDViewController.updateUI))
+    }
+    
+    func updateUI() {
+        
     }
 
     override func didReceiveMemoryWarning() {
