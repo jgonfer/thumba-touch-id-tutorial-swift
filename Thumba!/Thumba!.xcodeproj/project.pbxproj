@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DC59CA61E03EF5300895548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC59CA51E03EF5300895548 /* AppDelegate.swift */; };
-		1DC59CA81E03EF5300895548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC59CA71E03EF5300895548 /* ViewController.swift */; };
+		1DC59CA81E03EF5300895548 /* TouchIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC59CA71E03EF5300895548 /* TouchIDViewController.swift */; };
 		1DC59CAB1E03EF5300895548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC59CA91E03EF5300895548 /* Main.storyboard */; };
 		1DC59CAD1E03EF5300895548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC59CAC1E03EF5300895548 /* Assets.xcassets */; };
 		1DC59CB01E03EF5300895548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC59CAE1E03EF5300895548 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		1DC59CA21E03EF5300895548 /* Thumba!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thumba!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC59CA51E03EF5300895548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1DC59CA71E03EF5300895548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1DC59CA71E03EF5300895548 /* TouchIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDViewController.swift; sourceTree = "<group>"; };
 		1DC59CAA1E03EF5300895548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DC59CAC1E03EF5300895548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DC59CAF1E03EF5300895548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 				1DC59CB71E03EFA100895548 /* Resources */,
 				1DC59CAE1E03EF5300895548 /* LaunchScreen.storyboard */,
 				1DC59CA91E03EF5300895548 /* Main.storyboard */,
-				1DC59CA71E03EF5300895548 /* ViewController.swift */,
+				1DC59CA71E03EF5300895548 /* TouchIDViewController.swift */,
 				1DC59CA51E03EF5300895548 /* AppDelegate.swift */,
 			);
 			path = "Thumba!";
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DC59CA81E03EF5300895548 /* ViewController.swift in Sources */,
+				1DC59CA81E03EF5300895548 /* TouchIDViewController.swift in Sources */,
 				1DC59CA61E03EF5300895548 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

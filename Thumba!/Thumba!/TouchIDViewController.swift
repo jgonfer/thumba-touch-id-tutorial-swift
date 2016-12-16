@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class TouchIDViewController: UIViewController {
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var message: UILabel!
+    
+    let kMsgShowFinger = "Show me your finger 👍"
+    let kMsgShowReason = "🌛 Try to dismiss this screen 🌜"
+    let kMsgFingerOK = "Login successful! ✅"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
