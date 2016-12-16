@@ -12,6 +12,7 @@ import LocalAuthentication
 class TouchIDViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var refresh: UIButton!
     
     let kMsgShowFinger = "Show me your finger 👍"
     let kMsgShowReason = "🌛 Try to dismiss this screen 🌜"
@@ -38,8 +39,8 @@ class TouchIDViewController: UIViewController {
     private func setupController() {
         Utils.registerNotificationWillEnterForeground(observer: self, selector: #selector(TouchIDViewController.updateUI))
         
-        // Add right button in the navigation bar to repeat the login process so many times as we want
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(TouchIDViewController.updateUI))
+        // The Refresh button will let us to repeat the login process so many times as we want
+        refresh.alpha = 0
     }
     
     func updateUI() {
@@ -80,6 +81,10 @@ class TouchIDViewController: UIViewController {
         // Start evaluation process with a callback that is executed when the user ends the process successfully or not
         context.evaluatePolicy(policy, localizedReason: kMsgShowReason, reply: { (success, error) in
             DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.refresh.alpha = 1
+                })
+                
                 guard success else {
                     guard let error = error else {
                         self.showUnexpectedErrorMessage()
@@ -131,6 +136,21 @@ class TouchIDViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: IBAction Functions
+    
+    @IBAction func resetContextState(_ sender: UIButton) {
+        // Initialize our context object just in this example, in a real app it shouldn't be necessary. In fact, we should avoid this initialization
+        // The reason is because once our LAContext detects that the login was successfully done, it won't let us repeat the login process again
+        context = LAContext()
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.refresh.alpha = 0
+        })
+        
+        updateUI()
     }
 }
 
