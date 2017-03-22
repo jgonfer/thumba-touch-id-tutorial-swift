@@ -6,6 +6,6 @@
 [![Web: jgonfer.com](https://img.shields.io/badge/web-jgonfer.com-yellow.svg?style=flat)](https://jgonfer.com)
 [![Twitter: @j_gonfer](https://img.shields.io/badge/twitter-@j__gonfer-blue.svg?style=flat)](https://twitter.com/j_gonfer)
 
-<center>![](https://jgonfer.com/blog/wp-content/uploads/2016/12/Icon-60@3x-150x150.png)</center>
+![Icon App](https://jgonfer.com/blog/wp-content/uploads/2016/12/Icon-60@3x-150x150.png)
 
 Visit the related post to learn about the Touch ID API and make this project from scratch at https://jgonfer.com/blog/touch-id-authentication-tutorial-for-swift-3/.
